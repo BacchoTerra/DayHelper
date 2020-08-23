@@ -1,6 +1,7 @@
 package com.bacchoterra.dayhelper.localdb;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -10,6 +11,7 @@ import com.bacchoterra.dayhelper.model.FeelingNote;
 
 import java.util.List;
 
+@Dao
 public interface FeelingNoteDao {
 
     @Insert
