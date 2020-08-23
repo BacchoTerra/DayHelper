@@ -4,4 +4,18 @@
     <string name="open">open</string>
     <string name="how_are_you_feeling_today">How are you feeling today?</string>
     <string name="think_of_this_as_your_diary">Think of this as your diary..</string>
+    <string name="we_are_glad_you_are_happy">We are glad to know that you are happy :)</string>
+    <string name="it_is_ok_to_be_sad">It is OK to be sad…</string>
+    <string name="fear_is_only_natural">Fear is only natural!</string>
+    <string name="love_is_what_we_all_need">Love is what we all need.</string>
+    <string name="dont_let_anger_make_your_decisions">don\'t let anger make your decisions!</string>
+
+
+    <!-- hints for editFeelings-->
+    <string name="some_people_say_that_writing_about_feelings_makes_us_feel_better_shall_we_try">Some people say that writing about feelings makes us feel better … Shall we try?</string>
+    <string name="happiness_is_always_contagious_save_your_best_moments">Happiness is always contagious! Save your best moments!</string>
+    <string name="sadness_is_sometimes_a_great_friend_we_can_learn_a_lot_from_it_why_blue_today">Sadness is sometimes a great friend, we can learn a lot from it…Why are you blue today?</string>
+    <string name="fear_gives_us_the_possibility_to_remember_that_we_are_courageous_what_s_going_on">Fear gives us the possibility to remember that we are courageous …What\'s going on?</string>
+    <string name="never_forget_value_current_things_they_are_the_best_what_do_you_value_today">Never forget, value current things, they are the best! What do you value today?</string>
+    <string name="anger_is_momentary_i_guarantee_you_it_is_never_worth_it_what_is_bothering_you">Anger is momentary..I guarantee you, it is NEVER worth it …what is bothering you?</string>
 </resources>
