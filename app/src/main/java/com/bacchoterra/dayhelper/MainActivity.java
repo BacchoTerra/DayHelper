@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
@@ -16,7 +18,11 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.bacchoterra.dayhelper.model.FeelingNote;
+import com.bacchoterra.dayhelper.viewmodel.FeelingViewModel;
 import com.tomerrosenfeld.customanalogclockview.CustomAnalogClock;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
     private int sad;
     private int love;
     private int fear;
-
     private int currentColor;
+
+    //ViewModel
+    FeelingViewModel mViewModel;
 
 
     @Override
@@ -154,4 +162,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    private void initViewModel(){
+        mViewModel = new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(FeelingViewModel.class);
+        mViewModel.getAllNotes().observe(this, new Observer<List<FeelingNote>>() {
+            @Override
+            public void onChanged(List<FeelingNote> feelingNotes) {
+                //Update recyclerView;
+            }
+        });
+    }
+
 }
