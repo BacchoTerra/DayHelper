@@ -8,11 +8,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 
+import com.tomerrosenfeld.customanalogclockview.CustomAnalogClock;
+
 public class MainActivity extends AppCompatActivity {
 
     //Layout
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
+    private CustomAnalogClock analogClock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,15 +25,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-
-        toolbar = findViewById(R.id.activity_main_toolbar);
-        setSupportActionBar(toolbar);
-        drawerLayout = findViewById(R.id.activity_main_drawerLayout);
-
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-
+        initViews();
+        initDrawerLayout();
+        initAnalogClock();
 
     }
 
@@ -43,5 +40,25 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
 
+    }
+
+    private void initViews(){
+        toolbar = findViewById(R.id.activity_main_toolbar);
+        drawerLayout = findViewById(R.id.activity_main_drawerLayout);
+        analogClock = findViewById(R.id.activity_main_analogClock);
+    }
+
+    private void initAnalogClock() {
+
+        analogClock.setScale(0.7f);
+        analogClock.setAutoUpdate(true);
+
+    }
+
+    private void initDrawerLayout() {
+        setSupportActionBar(toolbar);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
     }
 }
