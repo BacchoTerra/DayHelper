@@ -75,6 +75,10 @@ public class DrawerNoteAdapter extends ListAdapter<FeelingNote, DrawerNoteAdapte
 
     }
 
+    public FeelingNote getNoteAt(int pos) {
+        return getItem(pos);
+    }
+
     static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtTitle;

@@ -5,7 +5,9 @@
     <color name="colorAccent">#263238</color>
 
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
     <color name="transparentBlack">#88000000</color>
+    <color name="recyclerBackground">#e6e7e8</color>
 
     <!--colors for each feeling-->
     <color name="anger">#E57373</color>
