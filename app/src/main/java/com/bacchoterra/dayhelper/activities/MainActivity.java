@@ -193,6 +193,12 @@ public class MainActivity extends AppCompatActivity {
                         feelingNotesAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
                     }
                 });
+                deleteBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        feelingNotesAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
+                    }
+                });
                 AlertDialog deleteDialog = deleteBuilder.create();
                 deleteDialog.show();
                 Button pButton = deleteDialog.getButton(DialogInterface.BUTTON_POSITIVE);
