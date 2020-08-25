@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
@@ -18,6 +19,8 @@ import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.content.DialogInterface;
 import android.content.res.ColorStateList;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -41,6 +44,8 @@ import com.infideap.drawerbehavior.AdvanceDrawerLayout;
 import com.tomerrosenfeld.customanalogclockview.CustomAnalogClock;
 
 import java.util.List;
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -157,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
             public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
 
                 int dragFlag = ItemTouchHelper.ACTION_STATE_IDLE;
-                int swipeFlag = ItemTouchHelper.START|ItemTouchHelper.END;
+                int swipeFlag = ItemTouchHelper.END;
 
                 return makeMovementFlags(dragFlag,swipeFlag);
             }
@@ -168,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
 
                 final FeelingNote minusNote = feelingNotesAdapter.getNoteAt(viewHolder.getAdapterPosition());
 
@@ -185,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
                 }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        feelingNotesAdapter.notifyDataSetChanged();
+                        feelingNotesAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
                     }
                 });
                 AlertDialog deleteDialog = deleteBuilder.create();
@@ -194,6 +199,19 @@ public class MainActivity extends AppCompatActivity {
                 Button nButton = deleteDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
                 pButton.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
                 nButton.setTextColor(currentColor);
+
+
+            }
+
+            @Override
+            public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+
+                new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                        .addBackgroundColor(getResources().getColor(R.color.red))
+                        .addActionIcon(R.drawable.ic_delete_forever_white_24dp)
+                        .create()
+                        .decorate();
 
 
             }
