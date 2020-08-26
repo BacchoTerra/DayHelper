@@ -40,14 +40,14 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/shape_white_all_round"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_main_analogClock" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_fabAnger" />
 
     <TextView
         android:id="@+id/activity_main_txtHowAreYou"
@@ -126,6 +126,8 @@
         android:id="@+id/activity_main_fabSad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
@@ -136,6 +138,7 @@
         app:backgroundTint="@color/sad"
         app:fabSize="mini"
         app:layout_constraintEnd_toStartOf="@+id/activity_main_fabHappy"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_main_txtHowAreYou"
         app:tint="@color/white" />
 
@@ -146,12 +149,15 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:clickable="true"
         android:focusable="true"
         android:onClick="fabChoice"
         android:src="@drawable/ic_mood_bad_white_24dp"
         app:backgroundTint="@color/fear"
         app:fabSize="mini"
+        app:layout_constraintEnd_toStartOf="@+id/activity_main_analogClock"
         app:layout_constraintStart_toEndOf="@+id/activity_main_fabHappy"
         app:layout_constraintTop_toBottomOf="@+id/activity_main_txtHowAreYou"
         app:tint="@color/white" />

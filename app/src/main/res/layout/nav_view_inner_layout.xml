@@ -1,60 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <View
-        android:id="@+id/view2"
+        android:id="@+id/activity_main_header_view"
         android:layout_width="wrap_content"
         android:layout_height="160dp"
+        android:background="@color/transparentBlack"
         android:padding="16dp"
-        android:background="#DCEDC8"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:drawableLeft="@drawable/ic_favorite_white_24dp"
-        android:id="@+id/textView"
+        android:id="@+id/activity_main_txtBrowse"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:drawableStart="@drawable/ic_share_blue_24dp"
+        android:drawableLeft="@drawable/ic_share_blue_24dp"
+        android:drawablePadding="14dp"
         android:padding="6dp"
-        android:drawablePadding="8dp"
-        android:drawableTint="@color/love"
-        android:text="See other people"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="Browse"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-        android:drawableStart="@drawable/ic_favorite_white_24dp" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_header_view" />
 
-    <View
-        android:id="@+id/view3"
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/darker_gray"
+    <TextView
+        android:id="@+id/activity_main_txtMessages"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:drawableStart="@drawable/ic_chat_bubble_outline_black_24dp"
+        android:drawableLeft="@drawable/ic_chat_bubble_outline_black_24dp"
+        android:drawablePadding="14dp"
+        android:padding="6dp"
+        android:text="Messages"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_txtBrowse" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activity_main_recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:background="@color/recyclerBackground"
-        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_txtMessages"
         tools:listitem="@layout/note_drawer_item_row" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/activity_main_imageViewUser"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_person_gray_24dp"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_main_txtUserName"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_main_txtUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:drawableEnd="@drawable/ic_mode_edit_white_24dp"
+        android:drawableRight="@drawable/ic_mode_edit_white_24dp"
+        android:textColor="@color/white"
+        android:text="Bruno Baccho Terra"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_main_header_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/activity_main_header_view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--<androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activity_main_recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/recyclerBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            tools:listitem="@layout/note_drawer_item_row" />
+            -->

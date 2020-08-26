@@ -5,12 +5,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +17,6 @@ import android.animation.ValueAnimator;
 import android.content.DialogInterface;
 import android.content.res.ColorStateList;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -53,17 +49,18 @@ public class MainActivity extends AppCompatActivity {
     private ViewGroup rootLayout;
     private Toolbar toolbar;
     private AdvanceDrawerLayout drawerLayout;
+    private View headerView;
     private CustomAnalogClock analogClock;
     private TextView txtMoodDesc;
     private EditText editFeeling;
     private RecyclerView recyclerView;
 
     //Colors/Feelings
-    private int happy;
-    private int anger;
-    private int sad;
-    private int love;
-    private int fear;
+    private int happyColor;
+    private int angerColor;
+    private int sadColor;
+    private int loveColor;
+    private int fearColor;
     private int currentColor;
 
     //ViewModel
@@ -105,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         rootLayout = findViewById(R.id.activity_main_rootLayout);
         toolbar = findViewById(R.id.activity_main_toolbar);
         drawerLayout = findViewById(R.id.activity_main_drawerLayout);
+        headerView = findViewById(R.id.activity_main_header_view);
         txtMoodDesc = findViewById(R.id.activity_main_txtMoodDesc);
         analogClock = findViewById(R.id.activity_main_analogClock);
         editFeeling = findViewById(R.id.activity_main_editFeeling);
@@ -128,11 +126,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void initColors() {
 
-        happy = getResources().getColor(R.color.happy);
-        sad = getResources().getColor(R.color.sad);
-        fear = getResources().getColor(R.color.fear);
-        love = getResources().getColor(R.color.love);
-        anger = getResources().getColor(R.color.anger);
+        happyColor = getResources().getColor(R.color.happy);
+        sadColor = getResources().getColor(R.color.sad);
+        fearColor = getResources().getColor(R.color.fear);
+        loveColor = getResources().getColor(R.color.love);
+        angerColor = getResources().getColor(R.color.anger);
 
         Drawable background = rootLayout.getBackground();
         if (background instanceof ColorDrawable)
@@ -250,31 +248,36 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
 
             case R.id.activity_main_fabHappy:
-                changeBackgroundColor(happy);
+                changeBackgroundColor(happyColor);
+                headerView.setBackgroundColor(happyColor);
                 txtMoodDesc.setText(R.string.we_are_glad_you_are_happy);
                 editFeeling.setHint(R.string.happiness_is_always_contagious_save_your_best_moments);
                 noteFeeling = FeelingNote.HAPPY;
                 break;
             case R.id.activity_main_fabSad:
-                changeBackgroundColor(sad);
+                changeBackgroundColor(sadColor);
+                headerView.setBackgroundColor(sadColor);
                 txtMoodDesc.setText(R.string.it_is_ok_to_be_sad);
                 editFeeling.setHint(R.string.sadness_is_sometimes_a_great_friend_we_can_learn_a_lot_from_it_why_blue_today);
                 noteFeeling = FeelingNote.SAD;
                 break;
             case R.id.activity_main_fabFear:
-                changeBackgroundColor(fear);
+                changeBackgroundColor(fearColor);
+                headerView.setBackgroundColor(fearColor);
                 txtMoodDesc.setText(R.string.fear_is_only_natural);
                 editFeeling.setHint(R.string.fear_gives_us_the_possibility_to_remember_that_we_are_courageous_what_s_going_on);
                 noteFeeling = FeelingNote.FEAR;
                 break;
             case R.id.activity_main_fabLove:
-                changeBackgroundColor(love);
+                changeBackgroundColor(loveColor);
+                headerView.setBackgroundColor(loveColor);
                 txtMoodDesc.setText(R.string.love_is_what_we_all_need);
                 editFeeling.setHint(R.string.never_forget_value_current_things_they_are_the_best_what_do_you_value_today);
                 noteFeeling = FeelingNote.LOVE;
                 break;
             case R.id.activity_main_fabAnger:
-                changeBackgroundColor(anger);
+                changeBackgroundColor(angerColor);
+                headerView.setBackgroundColor(angerColor);
                 txtMoodDesc.setText(R.string.dont_let_anger_make_your_decisions);
                 editFeeling.setHint(R.string.anger_is_momentary_i_guarantee_you_it_is_never_worth_it_what_is_bothering_you);
                 noteFeeling = FeelingNote.ANGER;
