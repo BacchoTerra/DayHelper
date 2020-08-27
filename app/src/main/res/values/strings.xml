@@ -30,4 +30,6 @@
     <string name="edit">Edit</string>
     <string name="share">Share</string>
     <string name="exclude">Exclude</string>
+    <string name="done">Done!</string>
+    <string name="note_deleted">Note deleted</string>
 </resources>

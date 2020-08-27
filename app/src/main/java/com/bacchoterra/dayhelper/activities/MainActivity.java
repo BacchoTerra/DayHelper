@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
                 Button pButton = deleteDialog.getButton(DialogInterface.BUTTON_POSITIVE);
                 Button nButton = deleteDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
                 pButton.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
-                nButton.setTextColor(currentColor);
+                nButton.setTextColor(getResources().getColor(R.color.transparentBlack));
 
 
             }
@@ -353,6 +353,7 @@ public class MainActivity extends AppCompatActivity {
                                 note.setPublished(false);
                                 mViewModel.insert(note);
                                 editFeeling.setText(null);
+                                Snackbar.make(rootLayout,R.string.done,Snackbar.LENGTH_LONG).setBackgroundTint(getResources().getColor(android.R.color.holo_green_dark)).show();
 
                             } else {
                                 Toast.makeText(MainActivity.this, getString(R.string.add_a_title_to_your_note), Toast.LENGTH_SHORT).show();
@@ -395,6 +396,7 @@ public class MainActivity extends AppCompatActivity {
             if (data != null) {
                 FeelingNote excludeNote = (FeelingNote) data.getExtras().get(GLOBAL_NOTE_KEY);
                 mViewModel.delete(excludeNote);
+                Snackbar.make(rootLayout,R.string.note_deleted,Snackbar.LENGTH_LONG).show();
             }else {
                 Toast.makeText(this, "Internal error", Toast.LENGTH_SHORT).show();
             }
