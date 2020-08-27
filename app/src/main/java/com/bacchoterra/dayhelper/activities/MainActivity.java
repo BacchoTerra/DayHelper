@@ -87,7 +87,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String GLOBAL_NOTE_KEY = "note_key";
 
     //Activity results
-    public static final int EXCLUDE_NOTE = 100;
+    public static final int OPEN_NOTE_ACTIVITY = 100;
+
+    //Action made in NOTE_ACTIVITY
+    public static final int ACTION_DELETE = 0;
+    public static final int ACTION_EDIT = 1;
+
+    public static int ACTION_MADE;
 
 
     @Override
@@ -239,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
                 FeelingNote fNote = feelingNotesAdapter.getNoteAt(position);
                 Intent intent = new Intent(MainActivity.this,NoteActivity.class);
                 intent.putExtra(GLOBAL_NOTE_KEY,fNote);
-                startActivityForResult(intent,EXCLUDE_NOTE);
+                startActivityForResult(intent,OPEN_NOTE_ACTIVITY);
             }
 
             @Override
@@ -392,7 +398,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == EXCLUDE_NOTE && resultCode == RESULT_OK){
+        if (requestCode == OPEN_NOTE_ACTIVITY && ACTION_MADE == ACTION_DELETE && resultCode == RESULT_OK){
             if (data != null) {
                 FeelingNote excludeNote = (FeelingNote) data.getExtras().get(GLOBAL_NOTE_KEY);
                 mViewModel.delete(excludeNote);
@@ -400,6 +406,15 @@ public class MainActivity extends AppCompatActivity {
             }else {
                 Toast.makeText(this, "Internal error", Toast.LENGTH_SHORT).show();
             }
+        }else if (requestCode == OPEN_NOTE_ACTIVITY && ACTION_MADE == ACTION_EDIT && resultCode == RESULT_OK){
+
+            if (data != null) {
+                FeelingNote feelingNote = (FeelingNote) data.getExtras().get(GLOBAL_NOTE_KEY);
+                mViewModel.update(feelingNote);
+                Snackbar.make(rootLayout,R.string.note_updated,Snackbar.LENGTH_LONG).show();
+
+            }
+
         }
 
     }

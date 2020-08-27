@@ -64,7 +64,7 @@ public class FeelingNoteRepository {
         @Override
         protected Void doInBackground(FeelingNote... feelingNotes) {
 
-            myDao.insert(feelingNotes[0]);
+            myDao.update(feelingNotes[0]);
 
             return null;
         }

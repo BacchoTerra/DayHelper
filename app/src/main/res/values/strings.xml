@@ -32,4 +32,6 @@
     <string name="exclude">Exclude</string>
     <string name="done">Done!</string>
     <string name="note_deleted">Note deleted</string>
+    <string name="no_differences_detected">No differences were detected</string>
+    <string name="note_updated">Note updated</string>
 </resources>
