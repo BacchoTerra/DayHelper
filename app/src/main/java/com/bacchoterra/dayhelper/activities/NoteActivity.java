@@ -21,6 +21,7 @@ import com.bacchoterra.dayhelper.R;
 import com.bacchoterra.dayhelper.model.FeelingNote;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class NoteActivity extends AppCompatActivity {
@@ -214,7 +215,16 @@ public class NoteActivity extends AppCompatActivity {
                     intent.putExtra(MainActivity.GLOBAL_NOTE_KEY,note);
                     MainActivity.ACTION_MADE = MainActivity.ACTION_EDIT;
                     setResult(RESULT_OK,intent);
-                    finish();
+                    Snackbar.make(toolbar,R.string.note_updated,Snackbar.LENGTH_LONG).show();
+                    editTitle.setVisibility(View.GONE);
+                    editNote.setVisibility(View.GONE);
+                    toolbar.setVisibility(View.VISIBLE);
+                    txtNote.setVisibility(View.VISIBLE);
+                    fabSaveEdit.setVisibility(View.GONE);
+
+                    txtNote.setText(note.getNote());
+                    toolbar.setTitle(note.getTitle());
+
                 }else {
                     Toast.makeText(NoteActivity.this, R.string.no_differences_detected, Toast.LENGTH_SHORT).show();
                 }

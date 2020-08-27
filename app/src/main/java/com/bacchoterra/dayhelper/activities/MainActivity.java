@@ -411,7 +411,6 @@ public class MainActivity extends AppCompatActivity {
             if (data != null) {
                 FeelingNote feelingNote = (FeelingNote) data.getExtras().get(GLOBAL_NOTE_KEY);
                 mViewModel.update(feelingNote);
-                Snackbar.make(rootLayout,R.string.note_updated,Snackbar.LENGTH_LONG).show();
 
             }
 
