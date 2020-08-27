@@ -75,7 +75,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:fontFamily="sans-serif-smallcaps"
+        android:fontFamily="cursive"
         android:gravity="center"
         android:text="@string/think_of_this_as_your_diary"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"

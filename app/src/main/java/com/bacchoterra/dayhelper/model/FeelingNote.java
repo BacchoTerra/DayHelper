@@ -3,8 +3,10 @@ package com.bacchoterra.dayhelper.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "feeling_note_table")
-public class FeelingNote {
+public class FeelingNote implements Serializable {
 
     public static final int HAPPY = 0;
     public static final int SAD = 1;

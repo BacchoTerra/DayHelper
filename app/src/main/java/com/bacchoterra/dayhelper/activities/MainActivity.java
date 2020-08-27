@@ -1,6 +1,7 @@
 package com.bacchoterra.dayhelper.activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.drawable.ColorDrawable;
@@ -24,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,6 +34,7 @@ import android.widget.Toast;
 
 import com.bacchoterra.dayhelper.R;
 import com.bacchoterra.dayhelper.adapter.DrawerNoteAdapter;
+import com.bacchoterra.dayhelper.helper.RecyclerItemClickListener;
 import com.bacchoterra.dayhelper.model.FeelingNote;
 import com.bacchoterra.dayhelper.viewmodel.FeelingViewModel;
 import com.google.android.material.snackbar.Snackbar;
@@ -78,6 +82,12 @@ public class MainActivity extends AppCompatActivity {
     View dialogLayout;
     TextInputEditText editTitle;
     TextInputLayout dialogInputLayout;
+
+    //Bundle keys
+    public static final String GLOBAL_NOTE_KEY = "note_key";
+
+    //Activity results
+    public static final int EXCLUDE_NOTE = 100;
 
 
     @Override
@@ -222,6 +232,27 @@ public class MainActivity extends AppCompatActivity {
         };
         new ItemTouchHelper(itemTouch).attachToRecyclerView(recyclerView);
 
+
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                FeelingNote fNote = feelingNotesAdapter.getNoteAt(position);
+                Intent intent = new Intent(MainActivity.this,NoteActivity.class);
+                intent.putExtra(GLOBAL_NOTE_KEY,fNote);
+                startActivityForResult(intent,EXCLUDE_NOTE);
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        }));
+
     }
 
 
@@ -352,6 +383,21 @@ public class MainActivity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+        }
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == EXCLUDE_NOTE && resultCode == RESULT_OK){
+            if (data != null) {
+                FeelingNote excludeNote = (FeelingNote) data.getExtras().get(GLOBAL_NOTE_KEY);
+                mViewModel.delete(excludeNote);
+            }else {
+                Toast.makeText(this, "Internal error", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
