@@ -5,7 +5,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,8 +24,8 @@ public class AuthenticationDialog extends AppCompatDialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_authentication,null);
-        initSmartTabLayout(dialogView);
+        View dialogView = inflater.inflate(R.layout.dialog_login,null);
+        //initSmartTabLayout(dialogView);
         builder.setView(dialogView);
 
 
@@ -48,5 +48,15 @@ public class AuthenticationDialog extends AppCompatDialogFragment {
         viewPagerTab.setViewPager(viewPager);
 
         viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (getDialog() != null && getDialog().getWindow() != null){
+            getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        }
+
     }
 }

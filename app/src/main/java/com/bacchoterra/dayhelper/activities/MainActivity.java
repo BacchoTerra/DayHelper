@@ -256,6 +256,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,NoteActivity.class);
                 intent.putExtra(GLOBAL_NOTE_KEY,fNote);
                 startActivityForResult(intent,OPEN_NOTE_ACTIVITY);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
 
             @Override
