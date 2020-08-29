@@ -5,16 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/activity_main_header_view"
-        android:layout_width="wrap_content"
-        android:layout_height="160dp"
-        android:background="@color/transparentBlack"
-        android:padding="16dp"
+    <LinearLayout
+        android:id="@+id/activity_main_header_linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/activity_main_header_txtAuth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:padding="3dp"
+            android:text="@string/login"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/activity_main_header_imageViewUser"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:src="@drawable/ic_undraw_male_avatar"
+            android:tint="@color/fear"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="1dp" />
+
+        <TextView
+            android:id="@+id/activity_main_header_txtUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/welcome_to_day_helper"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/black" />
+
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/activity_main_txtBrowse"
@@ -33,7 +65,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_main_header_view" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_header_linearLayout" />
 
     <TextView
         android:id="@+id/activity_main_txtMessages"
@@ -58,57 +90,23 @@
         android:id="@+id/activity_main_recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@color/grayBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_main_txtMessages"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
         tools:listitem="@layout/note_drawer_item_row" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/activity_main_imageViewUser"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/ic_person_gray_24dp"
-        app:civ_border_color="@color/white"
-        app:civ_border_width="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/activity_main_txtUserName"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/activity_main_txtUserName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:drawableEnd="@drawable/ic_mode_edit_white_24dp"
-        android:drawableRight="@drawable/ic_mode_edit_white_24dp"
-        android:textColor="@color/white"
-        android:text="Bruno Baccho Terra"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="@+id/activity_main_header_view"
+    <View
+        android:id="@+id/view2"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/activity_main_header_view" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_main_txtMessages" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <!--<androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/activity_main_recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/recyclerBackground"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view3"
-            tools:listitem="@layout/note_drawer_item_row" />
-            -->

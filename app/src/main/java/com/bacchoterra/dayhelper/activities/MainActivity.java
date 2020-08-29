@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ import com.tomerrosenfeld.customanalogclockview.CustomAnalogClock;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class MainActivity extends AppCompatActivity {
@@ -54,12 +56,13 @@ public class MainActivity extends AppCompatActivity {
     private ViewGroup rootLayout;
     private Toolbar toolbar;
     private AdvanceDrawerLayout drawerLayout;
-    private View headerView;
     private CustomAnalogClock analogClock;
     private TextView txtMoodDesc;
     private EditText editFeeling;
     private RecyclerView recyclerView;
-    private TextView txtUserName;
+    private LinearLayout headerBackgroundLayout;
+    private TextView txtLogin;
+    private CircleImageView circleImageView;
 
     //Colors/Feelings
     private int happyColor;
@@ -122,12 +125,14 @@ public class MainActivity extends AppCompatActivity {
         rootLayout = findViewById(R.id.activity_main_rootLayout);
         toolbar = findViewById(R.id.activity_main_toolbar);
         drawerLayout = findViewById(R.id.activity_main_drawerLayout);
-        headerView = findViewById(R.id.activity_main_header_view);
         txtMoodDesc = findViewById(R.id.activity_main_txtMoodDesc);
         analogClock = findViewById(R.id.activity_main_analogClock);
         editFeeling = findViewById(R.id.activity_main_editFeeling);
         recyclerView = findViewById(R.id.activity_main_recyclerView);
-        txtUserName = findViewById(R.id.activity_main_txtUserName);
+        headerBackgroundLayout = findViewById(R.id.activity_main_header_linearLayout);
+        txtLogin = findViewById(R.id.activity_main_header_txtAuth);
+        circleImageView = findViewById(R.id.activity_main_header_imageViewUser);
+
     }
 
     private void initAnalogClock() {
@@ -291,35 +296,35 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.activity_main_fabHappy:
                 changeBackgroundColor(happyColor);
-                headerView.setBackgroundColor(happyColor);
+               // headerBackgroundLayout.setBackgroundColor(happyColor);
                 txtMoodDesc.setText(R.string.we_are_glad_you_are_happy);
                 editFeeling.setHint(R.string.happiness_is_always_contagious_save_your_best_moments);
                 noteFeeling = FeelingNote.HAPPY;
                 break;
             case R.id.activity_main_fabSad:
                 changeBackgroundColor(sadColor);
-                headerView.setBackgroundColor(sadColor);
+                //headerBackgroundLayout.setBackgroundColor(sadColor);
                 txtMoodDesc.setText(R.string.it_is_ok_to_be_sad);
                 editFeeling.setHint(R.string.sadness_is_sometimes_a_great_friend_we_can_learn_a_lot_from_it_why_blue_today);
                 noteFeeling = FeelingNote.SAD;
                 break;
             case R.id.activity_main_fabFear:
                 changeBackgroundColor(fearColor);
-                headerView.setBackgroundColor(fearColor);
+                //headerBackgroundLayout.setBackgroundColor(fearColor);
                 txtMoodDesc.setText(R.string.fear_is_only_natural);
                 editFeeling.setHint(R.string.fear_gives_us_the_possibility_to_remember_that_we_are_courageous_what_s_going_on);
                 noteFeeling = FeelingNote.FEAR;
                 break;
             case R.id.activity_main_fabLove:
                 changeBackgroundColor(loveColor);
-                headerView.setBackgroundColor(loveColor);
+                //headerBackgroundLayout.setBackgroundColor(loveColor);
                 txtMoodDesc.setText(R.string.love_is_what_we_all_need);
                 editFeeling.setHint(R.string.never_forget_value_current_things_they_are_the_best_what_do_you_value_today);
                 noteFeeling = FeelingNote.LOVE;
                 break;
             case R.id.activity_main_fabAnger:
                 changeBackgroundColor(angerColor);
-                headerView.setBackgroundColor(angerColor);
+                //headerBackgroundLayout.setBackgroundColor(angerColor);
                 txtMoodDesc.setText(R.string.dont_let_anger_make_your_decisions);
                 editFeeling.setHint(R.string.anger_is_momentary_i_guarantee_you_it_is_never_worth_it_what_is_bothering_you);
                 noteFeeling = FeelingNote.ANGER;
@@ -332,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initAuthDialog(){
 
-        txtUserName.setOnClickListener(new View.OnClickListener() {
+        txtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AuthenticationDialog authenticationDialog = new AuthenticationDialog();

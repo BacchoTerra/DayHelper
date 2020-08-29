@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.ogaclejapan.smarttablayout.SmartTabLayout
@@ -23,7 +23,7 @@
         app:stl_underlineThickness="1dp"
         app:stl_dividerColor="#4D000000"
         app:stl_dividerThickness="1dp"
-        android:background="#456"
+        android:background="@color/grayBackground"
         app:stl_defaultTabTextAllCaps="true"
         app:stl_defaultTabTextColor="#FC000000"
         app:stl_defaultTabTextSize="12sp"
@@ -38,7 +38,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/viewpagertab"
         />
 
