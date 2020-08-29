@@ -34,6 +34,7 @@ import android.widget.Toast;
 
 import com.bacchoterra.dayhelper.R;
 import com.bacchoterra.dayhelper.adapter.DrawerNoteAdapter;
+import com.bacchoterra.dayhelper.fragments.AuthenticationDialog;
 import com.bacchoterra.dayhelper.helper.RecyclerItemClickListener;
 import com.bacchoterra.dayhelper.model.FeelingNote;
 import com.bacchoterra.dayhelper.viewmodel.FeelingViewModel;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtMoodDesc;
     private EditText editFeeling;
     private RecyclerView recyclerView;
+    private TextView txtUserName;
 
     //Colors/Feelings
     private int happyColor;
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Model
     FeelingNote note = new FeelingNote();
+    //Valor padrão..utilizado para verificar se um feeling foi escolhido na hora de salvar a note;
     int noteFeeling = 450;
 
     //Dialog
@@ -111,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
         initColors();
         initViewModel();
         initRecyclerView();
+        initAuthDialog();
 
     }
 
@@ -123,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         analogClock = findViewById(R.id.activity_main_analogClock);
         editFeeling = findViewById(R.id.activity_main_editFeeling);
         recyclerView = findViewById(R.id.activity_main_recyclerView);
+        txtUserName = findViewById(R.id.activity_main_txtUserName);
     }
 
     private void initAnalogClock() {
@@ -321,6 +326,19 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
         }
+
+
+    }
+
+    private void initAuthDialog(){
+
+        txtUserName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AuthenticationDialog authenticationDialog = new AuthenticationDialog();
+                authenticationDialog.show(getSupportFragmentManager(),"authDialog");
+            }
+        });
 
 
     }
