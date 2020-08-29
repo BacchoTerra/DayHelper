@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "948995372912",
+    "firebase_url": "https://dayhelper-8bfa7.firebaseio.com",
+    "project_id": "dayhelper-8bfa7",
+    "storage_bucket": "dayhelper-8bfa7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948995372912:android:6a124c4c494b74f8eb41b5",
+        "android_client_info": {
+          "package_name": "com.bacchoterra.dayhelper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948995372912-oosuflvhhceql1tn64bmvf293d0bkk93.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bacchoterra.dayhelper",
+            "certificate_hash": "995108c8628563df2bdb4902a396bbdace3bb1a0"
+          }
+        },
+        {
+          "client_id": "948995372912-0089tov0dhdek5q2brjn1qa86g9f6n3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCL7_2bcQ_CxtXLR-H8Wu6GyT8Mi9MV71I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "948995372912-0089tov0dhdek5q2brjn1qa86g9f6n3j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
